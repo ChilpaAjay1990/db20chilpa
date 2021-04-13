@@ -23,5 +23,6 @@ package-lock.json
 # Coveralls
 coverage
 .env
+
 # Benchmarking
 benchmarks/graphs

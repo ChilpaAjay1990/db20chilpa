@@ -1,0 +1,34 @@
+extends layout
+
+block content
+  h1= title
+
+  form(id='AquaForm', action="/resource/aqua", method="POST")
+    div.form-group
+        label.aquaAttr(for='aquaname') aqua name 
+        input#aquaname(type='text', name='aquaname')
+    div.form-group
+        label.aquaAttr(for='aquatype') aqua type 
+        input#size(type='text', name='aquatype')
+    div.form-group
+        label.aquaAttr(for='cost') aqua cost
+        input#cost(type='number', name='cost')
+    input(type="submit")
+
+  script.
+    document.forms['AquaForm'].addEventListener('submit', (event) => {
+      event.preventDefault();
+      // TODO do something here to show user that form is being submitted
+      fetch(event.target.action, {
+        method: 'POST',
+        body: new URLSearchParams(new FormData(event.target)) // event.target is the form
+      }).then((resp) => {
+        return resp.json(); // or resp.text() or whatever the server sends
+      }).then((body) => {
+        alert("Save succeded")
+        // TODO handle body
+      }).catch((error) => {
+        // TODO handle error
+        alert("Save failed " + error )
+      });
+    });

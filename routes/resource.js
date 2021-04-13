@@ -10,11 +10,11 @@ router.get('/', api_controller.api);
 // POST request for creating a aqua.
 router.post('/aqua', aqua_controller.aqua_create_post);
 // DELETE request to delete aqua.
-router.delete('/aqua/:name', aqua_controller.aqua_delete);
+router.delete('/aqua/:id', aqua_controller.aqua_delete);
 // PUT request to update aqua.
-router.put('/aqua/:model', aqua_controller.aqua_update_put);
+router.put('/aqua/:id', aqua_controller.aqua_update_put);
 // GET request for one aqua.
-router.get('/aqua/:name', aqua_controller.aqua_detail);
+router.get('/aqua/:id', aqua_controller.aqua_detail);
 // GET request for list of all aqua items.
 router.get('/aqua', aqua_controller.aqua_list);
 module.exports = router;

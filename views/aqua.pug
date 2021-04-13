@@ -6,23 +6,7 @@ block content
   div(class="container-fluid")
         div(class="row")
             -
-                let aqua = [
-                    {
-                        "name": "aquaplant",
-                        "type": "small",
-                        "cost": 1
-                    },
-                    {
-                        "name": "aquaplant2",
-                        "type": "medium",
-                        "cost": 2
-                    },
-                    {
-                        "name": "aquaplant3",
-                        "type": "large",
-                        "cost": 3
-                    },                   
-                ]
+                let aqua = results
             each k,index in aqua
                 div(class="col-sm-2" onclick=`buy(${index})`) #{k.name}
                 div(class="col-sm-2" onclick=`buy(${index})`) #{k.type}

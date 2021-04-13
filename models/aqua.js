@@ -4,4 +4,4 @@ name: String,
 type: String,
 cost: Number
 })
-module.exports = mongoose.model("Aqua", aquaSchema)
+module.exports = mongoose.model("aqua", aquaSchema)
