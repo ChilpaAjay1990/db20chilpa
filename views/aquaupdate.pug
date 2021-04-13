@@ -2,27 +2,29 @@ extends layout
 
 block content
   h1= title
-
-  - let aquaid = toShow._id
-  - let aquaname = toShow.name
-  - let aquatype = toShow.type
-  - let aquacost = toShow.cost
-  
-  div.row(class='mb-2')
-    div.mr-1 ID is
-    div #{aquaid}
-  - let actionid = "/resource/aqua/" + aquaid
-  form(id='aquaForm', action= actionid, method="PUT")
-    div.form-group
-        label.aquaAttr(for='aquaname') aqua name
-        input#aquaname(type='text', name='aquaname', value= aquaname )
-    div.form-group
-        label.aquaAttr(for='type') aqua type
-        input#type(type='text', name='size', value= aquatype )
-    div.form-group
-        label.aquaAttr(for='cost') aqua cost
-        input#cost(type='number', name='cost', value= aquacost )
-    input(type="submit")
+  if toShow == null 
+   h2 no to instance to update
+  else
+    - let aquaid = toShow._id
+    - let aquaname = toShow.name
+    - let aquatype = toShow.type
+    - let aquacost = toShow.cost
+    
+    div.row(class='mb-2')
+        div.mr-1 ID is
+        div #{aquaid}
+    - let actionid = "/resource/aqua/" + aquaid
+    form(id='aquaForm', action= actionid, method="PUT")
+        div.form-group
+            label.aquaAttr(for='aquaname') aqua name
+            input#aquaname(type='text', name='aquaname', value= aquaname )
+        div.form-group
+            label.aquaAttr(for='type') aqua type
+            input#type(type='text', name='size', value= aquatype )
+        div.form-group
+            label.aquaAttr(for='cost') aqua cost
+            input#cost(type='number', name='cost', value= aquacost )
+        input(type="submit")
 
   script.
     document.forms['aquaForm'].addEventListener('submit', (event) => {

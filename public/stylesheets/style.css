@@ -2,11 +2,23 @@ body {
   padding: 50px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
-
+ 
 a {
-  color: #00B7FF;
+  color: #00b7ff;
+}
+.row {
 }
 .aquaAttr {
+  border: 1px solid black;
   background-color: aquamarine;
-  width: 120px;
+  width: 350px;
+  float: left;
+  padding-left: 10px;
+}
+.detail {
+  float: right;
+}
+h1 {
+  background-color: coral;
+  color: white;
 }
