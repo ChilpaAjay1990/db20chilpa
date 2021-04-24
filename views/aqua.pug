@@ -2,17 +2,29 @@ extends layout
 
 block content
   h1= title
-  p Welcome to Assignment 10
-  div(class="container-fluid")
-        div(class="row")
-            -
-                let aqua = results
-            each k,index in aqua
-                div(class="col-sm-2" onclick=`buy(${index})`) #{k.name}
-                div(class="col-sm-2" onclick=`buy(${index})`) #{k.type}
-                div(class="col-sm-2" onclick=`buy(${index})`) #{k.cost}
-  script.                
-        function buy(intemNo)
-        {
-              alert(`you purchased Item ${intemNo+1}`)
-        }            
+  - let aqua=results;
+  div(class="container-fluid mt-3")
+   div(class="row m-1")
+    each k in aqua
+      - let destinationupdate = `dispatch(\"/aqua/update?id=${k._id}\")`
+      - let destinationcreate = `dispatchCreate(\"/aqua/create\")`
+      - let destinationdelete = `dispatchDelete(\"/aqua/delete?id=${k._id}\")`
+        div(class="col-sm-6 bg-info m-1 p-3") Aqua #{k.name} - #{k.type} - #{k.cost}
+         button.btn( class="btn-primary ml-1", onclick= destinationcreate) Create
+         button.btn( class="btn-info ml-1", onclick= destinationupdate) Update
+         button.btn( class="btn-danger ml-1", onclick= destinationdelete) Delete
+
+  script.
+      function dispatch(path){
+      window.location.href=path
+      }
+      function buy(itemNo)
+      {
+        alert(`You purchased Item ${itemNo+1}`)
+      }
+      function dispatchCreate(path){
+        window.location.href=path
+      }
+      function dispatchDelete(path){
+        window.location.href=path
+      }

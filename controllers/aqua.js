@@ -38,7 +38,7 @@ exports.aqua_create_post = async function (req, res) {
         res.send(result);
     }
     catch (err) {
-        res.send(`{"error": ${err}}`)
+        res.send(err);
         res.status(500);
     }
 };
@@ -149,7 +149,7 @@ exports.aqua_delete_Page = async function(req, res) {
     console.log("Delete view for id "  + req.query.id)
     try{
         result = await aqua.findById(req.query.id)
-        res.render('aquadelete', { title: 'aqua Delete', toShow: result });
+        res.render('aquadelete', { title: ' Delete', toShow: result });
     }
     catch(err){
         res.status(500)
